@@ -12,6 +12,12 @@ const currentOS = {
     name: os.type(),
     release: os.release(),
     totalMem: os.totalmem(),
-    freeMem:os.freemem(),
+    freeMem: os.freemem(),
+bit:  os.arch(), // x64
+platform: os.platform(), // win32
+break: os.EOL, // \r\n
+hotsname: os.hostname(), // HAMEED-PC
+type: os.type(), // Windows_NT
+Uptime: os.uptime() // time in seconds since the computer has been started
 }
 console.log(currentOS);
