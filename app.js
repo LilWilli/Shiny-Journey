@@ -1,19 +1,28 @@
-//npm node package manager, global command, comes with node
-//npm --v to check the version of your npm
+const { readFile } = require("fs");
+const getText = (path) => {
+    return new Promise((resolve, reject) => {
+        readFile(path, "utf-8", (err, result) => {
+            if (err) {
+                console.log(err)
+                reject(err)
+            } else {
+                resolve(result)
+            }
+        })
+    })
+}
 
-//local dependency - use it only in this particular project
-//npm i <packageName>
-
-//global dependency - use it in any project
-//npm install -g <packageName> to download it globally
-//sudo npm i -g <packageName> (macbook)
-
-//package.json - manifest file (stores important info about project/package)'
-//manual approach (create package.json in the root, create properties etc)
-//npm init (step by step, press enter to skip)
-//npm init -y (everything default)
-
-const _ = require("lodash");
-const items = [1, [2, [3, [4]]]]
-const newItems = _.flattenDeep(items)
-console.log(newItems);
+// getText("./content/first.txt")
+//     .then((result) => console.log(result))
+//     .catch((err) => console.log(err))
+const start = async () => {
+    try {
+        const first = await getText("./content/first.txt");
+        const second = await getText("./content/second.txt");
+        console.log(first)
+        console.log(second)
+    } catch (error) {
+        console.log(`Error${error}`)
+    }
+}
+start()
