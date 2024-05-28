@@ -1,9 +1,9 @@
-const {join,sep,basename,resolve,normalize,} = require('path');
+const { join, sep, basename, resolve, normalize, } = require('path');
 console.log(sep);
 //to form a file path 
 const filepath = join("/content", "subfolder", "test.txt")
 console.log(filepath);
-//To brig out only the file or the last content on the file directory
+//To bring out only the file or the last content on the file directory
 
 const base = basename(filepath)
 console.log(base);

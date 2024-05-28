@@ -1,4 +1,4 @@
-const  {URL}  = require('url');
+const { URL } = require('url');
 const url = new URL('https://twitter.com/abulhasan4?ref=twitter&ref_src=twsrc%5Etfw');
 
 // console.log(url.searchParams.get('ref')); // twitter

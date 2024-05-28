@@ -1,28 +1,29 @@
-const { readFile } = require("fs");
-const getText = (path) => {
-    return new Promise((resolve, reject) => {
-        readFile(path, "utf-8", (err, result) => {
-            if (err) {
-                console.log(err)
-                reject(err)
-            } else {
-                resolve(result)
-            }
-        })
-    })
-}
+const { createReadStream, appendFile, writeFile } = require('fs');
+// appendFile("./content/big.txt", "Willi\nWilli\nWilli\nWilli\nWillsi\nWilli\nWilli\nWilli\nWilli\nWilli\nWilli\nWilli\nWilli\nWilli\nWilli\nWilli\nWilli\nWilli\nWilli\nWilli\nWilli\n", "utf-8", (err, result) => {
+//     if (err) {
+//         console.log(err)
 
-// getText("./content/first.txt")
-//     .then((result) => console.log(result))
-//     .catch((err) => console.log(err))
-const start = async () => {
-    try {
-        const first = await getText("./content/first.txt");
-        const second = await getText("./content/second.txt");
-        console.log(first)
-        console.log(second)
-    } catch (error) {
-        console.log(`Error${error}`)
-    }
+//     } else {
+//         console.log(result)
+//     }
+// })
+// const stream = createReadStream("./content/big.txt",{highWaterMark:9000})
+// stream.on("data", (res) => {
+//     console.log(res)
+// })
+// stream.on("error", (err) => {
+//     console.log(err)
+// })
+
+console.log("stream examples")
+for (let i = 0; i < 100000; i++) {
+  writeFile("./content/big.txt", `Willi\n ${i}`, "utf-8", (err, result) => {
+      if (err) {
+          console.log(err)
+  
+      } else {
+          console.log(result)
+      }
+  })
+    
 }
-start()
